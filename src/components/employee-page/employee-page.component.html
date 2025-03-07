@@ -1,0 +1,8 @@
+<div class="container text-center mt-5">
+  <h1 class="text-primary">¡Bootstrap 5 está funcionando en Angular!</h1>
+  <button class="btn btn-success">Haz clic aquí</button>
+</div>
+<!--<app-employee-card></app-employee-card>-->
+@for (e of employees; track $index) {
+  <p class="container text-center mt-5">{{e.nombre}}</p>
+}

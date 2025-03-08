@@ -12,15 +12,22 @@ import { EmployeeCardComponent } from '../employee-card/employee-card.component'
 export class EmployeePageComponent implements OnInit {
   employeeService: EmployeeService = inject(EmployeeService);
   employees: any[] = [];
+  loading: boolean = true;
+  error: string = '';
 
   ngOnInit(): void {
     this.employeeService.getAllEmployees().subscribe({
-      next: (newEmployees) => {
-        this.employees = newEmployees;
+      next: (response) => {
+        this.employees = response;
       },
-      error: (error) => {
-        console.error('Error detectado:', error.error);
+      error: (e) => {
+        this.loading = false;
+        this.error = e.error.error;
       },
+      complete: () => {
+        this.loading = false;
+        this.error = '';
+      }
     });
   }
 }

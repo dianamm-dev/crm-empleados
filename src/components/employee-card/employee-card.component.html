@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;">
+<div class="card">
   <img [src]="employee.photo" class="card-img-top" alt="Foto del empleado">
   <div class="card-body">
     <h5 class="card-title">{{ employee.nombre }} {{ employee.apellidos }}</h5>
@@ -8,5 +8,6 @@
       <strong>Departamento:</strong> {{ employee.departamento }}<br>
       <strong>Salario:</strong> {{ employee.salario }}€
     </p>
+    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver empleado</button>
   </div>
 </div>

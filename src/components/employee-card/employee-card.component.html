@@ -1,13 +1,12 @@
 <div class="card" style="width: 18rem;">
   <img [src]="employee.photo" class="card-img-top" alt="Foto del empleado">
   <div class="card-body">
-    <h5 class="card-title">{{ employee.name }} {{ employee.surname }}</h5>
+    <h5 class="card-title">{{ employee.nombre }} {{ employee.apellidos }}</h5>
     <p class="card-text">
       <strong>Email:</strong> {{ employee.email }}<br>
-      <strong>Teléfono:</strong> {{ employee.phone }}<br>
-      <strong>Departamento:</strong> {{ employee.department }}<br>
-      <strong>Salario:</strong> {{ employee.salary }}
+      <strong>Teléfono:</strong> {{ employee.telefono }}<br>
+      <strong>Departamento:</strong> {{ employee.departamento }}<br>
+      <strong>Salario:</strong> {{ employee.salario }}€
     </p>
   </div>
 </div>
-

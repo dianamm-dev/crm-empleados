@@ -18,5 +18,4 @@ export class EmployeeService {
 
         return this.http.get(`${this.url}empleados`, { headers });
     }
-
 }

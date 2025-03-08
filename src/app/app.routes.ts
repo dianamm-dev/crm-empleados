@@ -3,6 +3,11 @@ import { EmployeePageComponent } from '../components/employee-page/employee-page
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'empleados',
+        pathMatch: 'full'
+    },
+    {
         path: 'empleados',
         component: EmployeePageComponent
     }

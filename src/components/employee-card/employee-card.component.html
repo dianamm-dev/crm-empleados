@@ -1,0 +1,15 @@
+<div class="card d-flex align-items-center justify-content-center">
+  <div class="card-body text-center">
+    <div class="mx-auto d-flex align-items-center justify-content-center rounded-circle bg-light background_avatar">
+      <i class="bi bi-person-circle"></i>
+    </div>
+    <h5 class="card-title mt-3">{{ employee.nombre }} {{ employee.apellidos }}</h5>
+    <p class="card-text">
+      <strong>Email:</strong> {{ employee.email }}<br>
+      <strong>Teléfono:</strong> {{ employee.telefono }}<br>
+      <strong>Departamento:</strong> {{ employee.departamento }}<br>
+      <strong>Salario:</strong> {{ employee.salario }}€
+    </p>
+    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver empleado</button>
+  </div>
+</div>

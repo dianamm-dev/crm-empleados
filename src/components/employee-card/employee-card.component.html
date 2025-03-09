@@ -1,7 +1,9 @@
-<div class="card">
-  <img [src]="employee.photo" class="card-img-top" alt="Foto del empleado">
-  <div class="card-body">
-    <h5 class="card-title">{{ employee.nombre }} {{ employee.apellidos }}</h5>
+<div class="card d-flex align-items-center justify-content-center">
+  <div class="card-body text-center">
+    <div class="mx-auto d-flex align-items-center justify-content-center rounded-circle bg-light background_avatar">
+      <i class="bi bi-person-circle"></i>
+    </div>
+    <h5 class="card-title mt-3">{{ employee.nombre }} {{ employee.apellidos }}</h5>
     <p class="card-text">
       <strong>Email:</strong> {{ employee.email }}<br>
       <strong>Teléfono:</strong> {{ employee.telefono }}<br>

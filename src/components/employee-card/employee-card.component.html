@@ -10,6 +10,6 @@
       <strong>Departamento:</strong> {{ employee.departamento }}<br>
       <strong>Salario:</strong> {{ employee.salario }}€
     </p>
-    <button type="button" class="w-100 btn btn-lg btn-outline-primary">Ver empleado</button>
+    <button [routerLink]="['/detalle-empleado', employee._id]" type="button" class="w-100 btn btn-lg btn-outline-primary">Ver empleado</button>
   </div>
 </div>

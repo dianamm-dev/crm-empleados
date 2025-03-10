@@ -1,0 +1,42 @@
+.logo {
+    width: 100px;
+}
+
+img {
+    width: 70px;
+}
+a {
+    color: white;
+}
+a:hover {
+    color: red;
+
+
+}
+
+.info {
+    margin-left: 500px;
+}
+    
+ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.nav-item {
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    align-items: right;
+    margin-top: 18px;
+}
+div {
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+

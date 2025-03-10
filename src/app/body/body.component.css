@@ -1,56 +1,46 @@
-.bodyest {
-    padding: 100px;
+.boton {
+    cursor: pointer;
+    color: white;
+    border: 3px solid #09bdbb;
+    background-color: #67d68e;
+    font-size: 25px;
+    font-weight: bold;
+
 
 }
-.bodyest .row div{
-    height: 150px;
-    background-color: rgb(179, 219, 245);
-    border: 3px solid blue;
-    margin: 0 30px;
+
+.boton:hover {
+    background-color: #316945;
+}
+.bodyest .row div div{
+  
+   /* background-color: rgb(179, 219, 245);*/
+   background-color:#11998E;
+    border: 3px solid #09bdbb;
+    
     border-radius: 20px;
 }
 .seccion-clara {
-    color: rgb(91, 91, 228);
+    color: whitesmoke;
     background-color: white;
-    display: flex;
-    justify-content: center;
     
 
 }
-.row{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-        /* Centra verticalmente */
-    height: 100px;
-        /* Altura del elemento */ 
-    font-size: 25px;
-    font-weight: bold;
-    
-   
-    text-align: center;
-}
-.btn{
-    height: fit-content;
-    width: fit-content;
-    background-color: rgb(91, 91, 228);
-    font-size: 25px;
-    font-weight: bold;
 
-}
+ 
 .texto {
     align-items: center;
 }
-.rectangulo {
+/* .rectangulo {
     width: 710px;
     padding: 10px;
     height: fit-content; 
-    background-color: rgb(179, 219, 245);
-    border: 3px solid blue;        
+    background-color: #11998E;
+    border: 3px solid #09bdbb;        
     border-radius: 15px;
     
    
-}
+} */
 .button-size{
     width: fit-content;
     height: fit-content;

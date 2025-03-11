@@ -1,0 +1,14 @@
+<div class="card custom-shadow rounded-4 p-4" style="max-width: 400px; margin: auto; background-color: #f8f9fa;">
+  <div class="card-body text-center">
+    <div class="mx-auto d-flex align-items-center justify-content-center rounded-circle bg-light custom-shadow" style="width: 100px; height: 100px;">
+      <i class="bi bi-person-circle" style="font-size: 4rem; color: #6c757d;"></i>
+    </div>
+    <h5 class="card-title mt-4 fw-bold" style="color: #495057;">{{ employee.nombre }} {{ employee.apellidos }}</h5>
+    <p class="card-text text-muted mb-4">{{ employee.departamento }}</p>
+    <ul class="list-group list-group-flush text-start">
+      <li class="list-group-item"><strong>Email:</strong> {{ employee.email }}</li>
+      <li class="list-group-item"><strong>Teléfono:</strong> {{ employee.telefono }}</li>
+      <li class="list-group-item"><strong>Salario:</strong> {{ employee.salario }}€</li>
+    </ul>
+  </div>
+</div>

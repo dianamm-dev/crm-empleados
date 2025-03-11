@@ -5,9 +5,11 @@
     </div>
     <h5 class="card-title mt-3">{{ employee.nombre }} {{ employee.apellidos }}</h5>
     <p class="card-text">
+      <strong>Email:</strong> {{ employee.email }}<br>
+      <strong>Teléfono:</strong> {{ employee.telefono }}<br>
       <strong>Departamento:</strong> {{ employee.departamento }}<br>
+      <strong>Salario:</strong> {{ employee.salario }}€
     </p>
-    <button [routerLink]="['/detalle-empleado', employee._id]" type="button" class="w-100 btn btn-lg" style="background-color: #11998E; color: #ffffff;">Ver empleado</button>
   </div>
 </div>
 

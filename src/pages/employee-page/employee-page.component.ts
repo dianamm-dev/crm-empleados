@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { EmployeeCardComponent } from '../../components/employee-card/employee-card.component';
 import { EmployeeService } from '../../services/employee.service';
-import { EmployeeCardComponent } from '../employee-card/employee-card.component';
 
 @Component({
   selector: 'app-employee-page',

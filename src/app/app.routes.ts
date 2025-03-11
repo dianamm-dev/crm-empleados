@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { EmployeeDetailComponent } from '../components/employee-detail/employee-detail.component';
-import { EmployeePageComponent } from '../components/employee-page/employee-page.component';
+import { EmployeeDetailPageComponent } from '../pages/employee-detail-page/employee-detail-page.component';
+import { EmployeePageComponent } from '../pages/employee-page/employee-page.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +14,6 @@ export const routes: Routes = [
     },
     {
         path: 'detalle-empleado/:id',
-        component: EmployeeDetailComponent
+        component: EmployeeDetailPageComponent
     }
 ];

@@ -1,0 +1,13 @@
+<div class="card d-flex align-items-center justify-content-center card">
+  <div class="card-body text-center">
+    <div class="mx-auto d-flex align-items-center justify-content-center rounded-circle bg-light background_avatar">
+      <i class="bi bi-person-circle"></i>
+    </div>
+    <h5 class="card-title mt-3">{{ employee.nombre }} {{ employee.apellidos }}</h5>
+    <p class="card-text">
+      <strong>Departamento:</strong> {{ employee.departamento }}<br>
+    </p>
+    <button [routerLink]="['/detalle-empleado', employee._id]" type="button" class="w-100 btn btn-lg" style="background-color: #11998E; color: #ffffff;">Ver empleado</button>
+  </div>
+</div>
+

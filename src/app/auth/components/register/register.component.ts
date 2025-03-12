@@ -25,7 +25,7 @@ export class RegisterComponent {
     ])
   });
 
-  isSubmitting = false;  // Para controlar el spinner y el estado del botón
+  isSubmitting = false;
 
   static strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value as string;
@@ -45,7 +45,7 @@ export class RegisterComponent {
   onSubmit() {
     console.log(this.form.valid);
     if (this.form.valid) {
-      this.isSubmitting = true;  // Mostrar el spinner y deshabilitar el botón
+      this.isSubmitting = true;
       this.authService.register(this.form.value).subscribe({
         next: (response: any) => {
           console.log('Response:', response);
@@ -58,7 +58,7 @@ export class RegisterComponent {
         },
         complete: () => {
           setTimeout(() => {
-            this.isSubmitting = false;  // Ocultar el spinner después de 3 segundos
+            this.isSubmitting = false;
           }, 3000);
         }
       });

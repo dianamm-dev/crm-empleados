@@ -8,6 +8,7 @@ body, html {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
 }
 
 .form-container {
@@ -26,12 +27,19 @@ body, html {
 h4 {
   font-size: 26px;
   text-decoration: underline;
+  text-align: center;
 }
 
 button {
-    background-color: #11998E;
+  background-color: #11998E;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  border-radius: 5px;
 }
-  
+
 button:hover {
   background-color: #716c67;
 }
@@ -61,4 +69,71 @@ button:hover {
 .company-name {
   font-size: 32px;
   margin-top: 10px;
+}
+
+/*  MÓVIL */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .form-container {
+    max-width: 90%;
+  }
+
+  .input-large {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  h4 {
+    font-size: 22px;
+  }
+
+  .company-logo {
+    width: 120px;
+  }
+
+  .company-name {
+    font-size: 28px;
+  }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .form-container {
+    max-width: 80%;
+  }
+
+  .input-large {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .company-name {
+    font-size: 30px;
+  }
+}
+
+/* ESCRITORIO */
+@media (min-width: 1025px) {
+  .form-container {
+    max-width: 400px;
+  }
 }

@@ -18,4 +18,12 @@ export class EmployeeService {
 
         return this.http.get(`${this.url}empleados`, { headers });
     }
+
+    getEmployeeById(id: string) {
+        const headers = new HttpHeaders({
+            Authorization: this.token,
+        });
+
+        return this.http.get(`${this.url}empleados/${id}`, { headers });
+    }
 }

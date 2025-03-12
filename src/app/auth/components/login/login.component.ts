@@ -49,7 +49,10 @@ export class LoginComponent {
         (response: any) => {
           alert('✅ Inicio de sesión exitoso. Serás redirigido al dashboard.');
           this.form.reset();
+          // guardar token de sesión
           localStorage.setItem('token', response.token);
+
+          // redirigir a la pantalla principal
           this.router.navigate(['/dashboard']);
         },
         (error: any) => {

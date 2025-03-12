@@ -14,7 +14,7 @@
 }
 .bodyest .row div div{
   
-   /* background-color: rgb(179, 219, 245);*/
+   
    background-color:#11998E;
     border: 3px solid #09bdbb;
     
@@ -41,7 +41,7 @@
     
    
 } */
-.button-size{
+.button-size {
     width: fit-content;
     height: fit-content;
     padding: 10px;

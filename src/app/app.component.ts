@@ -2,7 +2,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from "../components/footer/footer.component";
-import { BodyComponent } from './body/body.component';
+
 
 
 
@@ -10,7 +10,7 @@ import { BodyComponent } from './body/body.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, BodyComponent],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

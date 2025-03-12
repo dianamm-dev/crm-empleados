@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="form-container">
+    <div class="company-info text-center mb-4">
+      <img src="/logoEmpresa.jpg" alt="RAVADISA Logo" class="company-logo mb-2" />
+      <h1 class="company-name">RAVADISA</h1>
+    </div>
+
+    <h4 class="text-center mb-3">INICIAR SESIÓN</h4>
+    <form class="form card p-3" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div>
+        <label class="font-weight-bold h5">Correo</label>
+        <input class="form-control input-large" type="email" formControlName="email" placeholder="Correo" required />
+      </div>
+      <div>
+        <label class="font-weight-bold h5">Contraseña</label>
+        <input class="form-control input-large" type="password" formControlName="password" placeholder="Contraseña" required />
+      </div>
+      <button class="btn btn-primary mt-3" type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión' }}
+      </button>
+    </form>
+
+    <!-- Spinner que aparece solo si isSubmitting es true -->
+    <div class="spinner" *ngIf="isSubmitting">
+      <div class="spinner-border text-secondary" style="width: 5rem; height: 5rem;" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+    </div>
+  </div>
+</div>
+

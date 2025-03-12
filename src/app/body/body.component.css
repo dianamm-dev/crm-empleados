@@ -1,0 +1,51 @@
+.boton {
+    cursor: pointer;
+    color: white;
+    border: 3px solid #09bdbb;
+    background-color: #67d68e;
+    font-size: 25px;
+    font-weight: bold;
+
+
+}
+
+.boton:hover {
+    background-color: #316945;
+}
+.bodyest .row div div{
+  
+   
+   background-color:#11998E;
+    border: 3px solid #09bdbb;
+    
+    border-radius: 20px;
+}
+.seccion-clara {
+    color: whitesmoke;
+    background-color: white;
+    
+
+}
+
+ 
+.texto {
+    align-items: center;
+}
+/* .rectangulo {
+    width: 710px;
+    padding: 10px;
+    height: fit-content; 
+    background-color: #11998E;
+    border: 3px solid #09bdbb;        
+    border-radius: 15px;
+    
+   
+} */
+.button-size {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    margin-top: 10%;
+    border-color: blueviolet;
+}
+

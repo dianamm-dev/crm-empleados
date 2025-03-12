@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { AuthService } from './../../services/auth.service';
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent {
     ])
   });
 
-isSubmitting: any;
+  isSubmitting: any;
 
   static strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value as string;
@@ -40,15 +40,16 @@ isSubmitting: any;
       ? null
       : { strongPassword: true };
   }
-  
-   onSubmit() {
+
+  onSubmit() {
     if (this.form.valid) {
       this.isSubmitting = true;
 
       this.authService.login(this.form.value).subscribe(
-        () => {
+        (response: any) => {
           alert('✅ Inicio de sesión exitoso. Serás redirigido al dashboard.');
           this.form.reset();
+          localStorage.setItem('token', response.token);
           this.router.navigate(['/dashboard']);
         },
         (error: any) => {
@@ -57,7 +58,7 @@ isSubmitting: any;
         },
         () => {
           setTimeout(() => {
-            this.isSubmitting = false; 
+            this.isSubmitting = false;
           });
         }
       );

@@ -5,7 +5,6 @@ import { EmployeeDetailPageComponent } from '../pages/employee-detail-page/emplo
 import { EmployeePageComponent } from '../pages/employee-page/employee-page.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
-import { PasswordComponent } from './auth/components/password/password.component';
 
 export const routes: Routes = [
     {
@@ -33,14 +32,6 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
-    },
-    {
-        path: 'password-recovery',
-        component: PasswordComponent
-    },
-    {
-        path: 'password',
-        component: PasswordComponent
     },
     {
         path: '**',

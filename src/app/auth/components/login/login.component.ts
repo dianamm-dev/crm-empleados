@@ -43,17 +43,16 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.isSubmitting = true;  // Muestra el spinner y deshabilita el botón
+      this.isSubmitting = true;
 
       this.authService.login(this.form.value).subscribe(
         (response: any) => {
-          alert('✅ Inicio de sesión exitoso. Serás redirigido al dashboard.');
-          this.form.reset();
-          // guardar token de sesión
+          alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
           localStorage.setItem('token', response.token);
-
-          // redirigir a la pantalla principal
-          this.router.navigate(['/dashboard']);
+          this.authService.email = this.form.value.email!;
+          console.log('Response:', response);
+          this.form.reset();
+          this.router.navigate(['/home']);
         },
         (error: any) => {
           alert('❌ Error en el inicio de sesión. Verifica tus credenciales.');

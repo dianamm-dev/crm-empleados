@@ -43,7 +43,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.isSubmitting = true;  // Muestra el spinner y deshabilita el botón
+      this.isSubmitting = true;
 
       this.authService.login(this.form.value).subscribe(
         (response: any) => {

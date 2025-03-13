@@ -7,6 +7,8 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
+import { FooterComponent } from '../components/footer/footer.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { routes } from './app.routes';
     AuthModule,
     FormsModule,
     RouterOutlet,
+    FooterComponent,
+    NavbarComponent
   ],
   providers: [],
   bootstrap: [] 

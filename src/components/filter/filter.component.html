@@ -1,0 +1,19 @@
+<div class="row mb-3">
+  <div class="col-2">
+    <select class="form-select" [formControl]="searchTypeControl">
+      <option value="name">Nombre</option>
+      <option value="lastname">Apellido</option>
+      <option value="email">Email</option>
+    </select>
+  </div>
+  <div class="col-9">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Buscar empleado..." [formControl]="searchControl" />
+    </div>
+  </div>
+  <div class="col-1 d-flex align-items-center">
+    <button class="btn btn-outline-secondary" (click)="clearFilter()" [disabled]="!searchControl.value">
+      <i class="bi bi-x-circle"></i>
+    </button>
+  </div>
+</div>

@@ -47,10 +47,11 @@ export class LoginComponent {
 
       this.authService.login(this.form.value).subscribe(
         (response: any) => {
-          alert('✅ Inicio de sesión exitoso. Serás redirigido al dashboard.');
-          this.form.reset();
+          alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
           localStorage.setItem('token', response.token);
-          this.router.navigate(['/dashboard']);
+          console.log('Response:', response);
+          this.form.reset();
+          this.router.navigate(['/home']);
         },
         (error: any) => {
           alert('❌ Error en el inicio de sesión. Verifica tus credenciales.');

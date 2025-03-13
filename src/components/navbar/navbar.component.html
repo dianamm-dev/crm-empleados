@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark ">
     <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -7,15 +7,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <h2>RAVADISA</h2>
+            <h3>{{authService.username}}</h3>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <i class="bi bi-bell-fill"></i>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mailto:info@ravadisa.com">info&#64;ravadisa.com <i class="bi bi-envelope-fill "></i></a>
+                    <a class="nav-link" href="mailto:info@ravadisa.com">info&#64;ravadisa.com <i
+                            class="bi bi-envelope-fill "></i></a>
                 </li>
                 <li class="nav-item">
+
                     <button (click)="onLogout()"type="button" class="btn btn-dark" data-mdb-ripple-init>Cerrar Sesión</button>
+                  
+
                 </li>
             </ul>
         </div>

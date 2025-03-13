@@ -6,6 +6,11 @@
     </div>
 
     <h4 class="text-center mb-3">INICIAR SESIÓN</h4>
+
+    <div *ngIf="loginError" class="alert alert-danger">
+      <p>¡Credenciales incorrectas! Por favor, intenta nuevamente.</p>
+    </div>
+
     <form class="form card p-3" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div>
         <label class="font-weight-bold h5">Correo</label>
@@ -20,12 +25,21 @@
       </button>
     </form>
 
-    <!-- Spinner que aparece solo si isSubmitting es true -->
     <div class="spinner" *ngIf="isSubmitting">
       <div class="spinner-border text-secondary" style="width: 5rem; height: 5rem;" role="status">
         <span class="visually-hidden">Cargando...</span>
       </div>
     </div>
+
+    <div class="extra-options text-center mt-3">
+      <p>
+        ¿Aún no tienes cuenta?  
+        <a href="/register" class="register-link">Regístrate</a>.
+      </p>
+      <p>
+        <a href="/register" class="forgot-password">¿Has olvidado la contraseña?</a>
+      </p>
+    </div>
+
   </div>
 </div>
-

@@ -8,6 +8,7 @@ body, html {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 20px;
 }
 
 .form-container {
@@ -29,13 +30,19 @@ h4 {
 }
 
 button {
-    background-color: #11998E;
-  }
-  
+  background-color: #11998E;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
 button:hover {
   background-color: #716c67;
 }
-  
+
 .spinner {
   text-align: center;
   margin-bottom: 20px;
@@ -58,5 +65,89 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.extra-options {
+  margin-top: 20px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.register-link {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #11998E;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  color: #0a7665;
+}
+
+.forgot-password {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  color: #666;
+}
+
+/* MÓVIL */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
   
- 
+  .form-container {
+    max-width: 90%;
+  }
+
+  .input-large {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  h4 {
+    font-size: 22px;
+  }
+
+  .company-logo {
+    max-width: 120px;
+  }
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .form-container {
+    max-width: 80%;
+  }
+
+  .input-large {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* ESCRITORIO */
+@media (min-width: 1025px) {
+  .form-container {
+    max-width: 400px;
+  }
+}

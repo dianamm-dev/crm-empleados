@@ -1,8 +1,8 @@
-import { Router } from '@angular/router';
-import { AuthService } from './../../services/auth.service';
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +25,7 @@ export class RegisterComponent {
     ])
   });
 
-  isSubmitting = false;  // Para controlar el spinner y el estado del botón
+  isSubmitting = false;
 
   static strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value as string;
@@ -45,10 +45,9 @@ export class RegisterComponent {
   onSubmit() {
     console.log(this.form.valid);
     if (this.form.valid) {
-      this.isSubmitting = true;  // Mostrar el spinner y deshabilitar el botón
+      this.isSubmitting = true;
       this.authService.register(this.form.value).subscribe({
         next: (response: any) => {
-          console.log('Response:', response);
           alert('✅ Registro exitoso. Serás redirigido al login.');
           this.router.navigate(['/login']);
         },
@@ -58,7 +57,7 @@ export class RegisterComponent {
         },
         complete: () => {
           setTimeout(() => {
-            this.isSubmitting = false;  // Ocultar el spinner después de 3 segundos
+            this.isSubmitting = false;
           }, 3000);
         }
       });

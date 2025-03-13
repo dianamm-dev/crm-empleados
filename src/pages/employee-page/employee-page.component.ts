@@ -13,6 +13,7 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeePageComponent implements OnInit {
   employeeService: EmployeeService = inject(EmployeeService);
   employees: any[] = [];
+  selectionType: string = 'name';
   loading: boolean = true;
   error: string = '';
 
@@ -36,13 +37,34 @@ export class EmployeePageComponent implements OnInit {
     });
   }
 
-  filterNameChanged(name: string) {
-    if (name === '') {
+  typeChanged(value: string) {
+    //console.log(value); recoge el valor del select seleccionado
+    this.selectionType = value;
+  }
+
+  filterChanged(value: string) {
+    if (value === '') {
       this.getEmployees();
+
+      return;
     }
-    const filteredEmployees = this.employees.filter(e =>
-      e.nombre.toLowerCase().includes(name.toLowerCase())
-    );
+
+    let filteredEmployees = [];
+    if (this.selectionType === 'name') {
+      filteredEmployees = this.employees.filter(e =>
+        e.nombre.toLowerCase().includes(value.toLowerCase())
+      );
+    } else if (this.selectionType === 'lastname') {
+      filteredEmployees = this.employees.filter(e =>
+        e.apellidos.toLowerCase().includes(value.toLowerCase())
+      );
+    } else if (this.selectionType === 'email') {
+      filteredEmployees = this.employees.filter(e =>
+        e.email.toLowerCase().includes(value.toLowerCase())
+      );
+    } else {
+      filteredEmployees = [];
+    }
 
     this.employees = filteredEmployees;
   }

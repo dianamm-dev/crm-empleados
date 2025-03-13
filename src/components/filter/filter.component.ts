@@ -11,10 +11,21 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 })
 export class FilterComponent {
   searchControl = new FormControl('');
+  searchTypeControl = new FormControl('name');
 
+  @Output() typeChanged = new EventEmitter<string>();
   @Output() valueChanged = new EventEmitter<string>();
 
   constructor() {
+    this.searchTypeControl.valueChanges
+      .subscribe(value => {
+        // emite un nuevo valor sólo si existe valor
+        if (value === null || value === undefined) {
+          return;
+        }
+        this.typeChanged.emit(value)
+      });
+
     this.searchControl.valueChanges
       .pipe(
         debounceTime(300),
@@ -32,6 +43,6 @@ export class FilterComponent {
 
   clearFilter() {
     this.searchControl.setValue('');
-    this.valueChanged.emit('');
+    this.valueChanged.emit('')
   }
 }

@@ -1,23 +1,23 @@
-@if (loading) 
+@if (loading)
 {
- <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
   <div class="spinner-border text-secondary" style="width: 5rem; height: 5rem;" role="status">
     <span class="visually-hidden">Cargando...</span>
   </div>
 </div>
 } @else if (error != '') {
-  <p>{{error}}</p>
+<p>{{error}}</p>
 } @else {
+<div class="container">
   <div class="container">
-    <div class="container">
-      <app-filter (valueChanged)="filterNameChanged($event)"></app-filter>
-    </div>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 align-items-stretch">
-      @for (e of employees; track $index) {
-        <div class="col d-flex">
-          <app-employee-card [employee]="e" class="mb-4 w-100 d-flex flex-column"></app-employee-card>
-        </div>
-      }
-    </div>
+    <app-filter (typeChanged)="typeChanged($event)" (valueChanged)="filterChanged($event)"></app-filter>
   </div>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 align-items-stretch">
+    @for (e of employees; track $index) {
+    <div class="col d-flex">
+      <app-employee-card [employee]="e" class="mb-4 w-100 d-flex flex-column"></app-employee-card>
+    </div>
+    }
+  </div>
+</div>
 }

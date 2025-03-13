@@ -6,6 +6,11 @@
     </div>
 
     <h4 class="text-center mb-3">INICIAR SESIÓN</h4>
+
+    <div *ngIf="loginError" class="alert alert-danger">
+      <p>¡Credenciales incorrectas! Por favor, intenta nuevamente.</p>
+    </div>
+
     <form class="form card p-3" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div>
         <label class="font-weight-bold h5">Correo</label>
@@ -38,4 +43,3 @@
 
   </div>
 </div>
-

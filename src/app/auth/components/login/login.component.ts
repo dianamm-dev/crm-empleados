@@ -24,7 +24,8 @@ export class LoginComponent {
     ])
   });
 
-  isSubmitting: any;
+  isSubmitting: boolean = false;
+  loginError: boolean = false;
 
   static strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value as string;
@@ -44,6 +45,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.form.valid) {
       this.isSubmitting = true;
+      this.loginError = false;
 
       this.authService.login(this.form.value).subscribe(
         (response: any) => {
@@ -55,8 +57,13 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         },
         (error: any) => {
+          this.loginError = true;
           alert('❌ Error en el inicio de sesión. Verifica tus credenciales.');
           console.error('Error:', error);
+          setTimeout(() => {
+            this.isSubmitting = false;
+            this.form.reset();
+          });
         },
         () => {
           setTimeout(() => {

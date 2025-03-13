@@ -5,6 +5,7 @@ import { EmployeeDetailPageComponent } from '../pages/employee-detail-page/emplo
 import { EmployeePageComponent } from '../pages/employee-page/employee-page.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';  
 
 export const routes: Routes = [
     {
@@ -19,7 +20,6 @@ export const routes: Routes = [
     {
         path: 'home',
         component: BodyComponent
-
     },
     {
         path: 'detalle-empleado/:id',
@@ -32,6 +32,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'add-employee',  // <-- Nueva ruta para el componente
+        component: AddEmployeeComponent
     },
     {
         path: '**',

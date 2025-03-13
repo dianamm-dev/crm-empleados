@@ -1,3 +1,12 @@
-    <div class="input-group mb-3">
+<div class="row mb-3">
+  <div class="col-11">
+    <div class="input-group">
       <input type="text" class="form-control" placeholder="Buscar empleado" [formControl]="searchControl" />
     </div>
+  </div>
+  <div class="col-1 d-flex align-items-center">
+    <button class="btn btn-outline-secondary" (click)="clearFilter()" [disabled]="!searchControl.value">
+      <i class="bi bi-x-circle"></i>
+    </button>
+  </div>
+</div>

@@ -29,4 +29,9 @@ export class FilterComponent {
         this.valueChanged.emit(value)
       });
   }
+
+  clearFilter() {
+    this.searchControl.setValue('');
+    this.valueChanged.emit('');
+  }
 }

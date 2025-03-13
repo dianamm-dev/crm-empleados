@@ -46,10 +46,12 @@ isSubmitting: any;
       this.isSubmitting = true;
 
       this.authService.login(this.form.value).subscribe(
-        () => {
-          alert('✅ Inicio de sesión exitoso. Serás redirigido al dashboard.');
+        (response: any) => {
+          alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
+          localStorage.setItem('token', response.token);
+          console.log('Response:', response);
           this.form.reset();
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
         },
         (error: any) => {
           alert('❌ Error en el inicio de sesión. Verifica tus credenciales.');

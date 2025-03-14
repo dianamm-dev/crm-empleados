@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './add-employee.component.css'
 })
 export class AddEmployeeComponent {
+employeeForm: any;
+addEmployee: any;
+closeModal: any;
+successMessage: any;
+errorMessage: any;
 
 }

@@ -1,4 +1,4 @@
-footer h5 {
+footer p {
     position: sticky;
     bottom: 0%;
     width: 100%;
@@ -9,10 +9,10 @@ footer h5 {
 
 }
 
-footer h5 a {
+footer p a {
     color: rgb(234, 245, 234);
 }
 
-footer h5 a:hover {
+footer p a:hover {
     color: #aaabbab9;
 }

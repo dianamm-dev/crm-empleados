@@ -10,6 +10,7 @@ export class AuthService {
   private http: HttpClient = inject(HttpClient);
 
   private router: Router = inject(Router);
+  private _username = '';
   
   
 
@@ -26,8 +27,20 @@ export class AuthService {
 
 
   onLogout(): void {
-  localStorage.clear();
-  this.router.navigate(['/login']);
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+ 
+
+  public get username() {
+    return this._username;
+  }
+
+  public set username(username: string) {
+    this._username = username;
+
+  }
 
  
 

@@ -10,7 +10,8 @@
 } @else {
 <div class="container">
   <div class="container">
-    <app-filter (typeChanged)="typeChanged($event)" (valueChanged)="filterChanged($event)"></app-filter>
+    <app-filter (clearChanged)="clearFilter($event)" (typeChanged)="typeChanged($event)"
+      (valueChanged)="filterChanged($event)"></app-filter>
   </div>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 align-items-stretch">
     @for (e of employees; track $index) {

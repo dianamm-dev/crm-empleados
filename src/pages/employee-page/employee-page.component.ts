@@ -37,8 +37,13 @@ export class EmployeePageComponent implements OnInit {
     });
   }
 
+  clearFilter(value: boolean) {
+    if (value) {
+      this.getEmployees();
+    }
+  }
+
   typeChanged(value: string) {
-    //console.log(value); recoge el valor del select seleccionado
     this.selectionType = value;
   }
 
@@ -61,6 +66,10 @@ export class EmployeePageComponent implements OnInit {
     } else if (this.selectionType === 'email') {
       filteredEmployees = this.employees.filter(e =>
         e.email.toLowerCase().includes(value.toLowerCase())
+      );
+    } else if (this.selectionType === 'department') {
+      filteredEmployees = this.employees.filter(e =>
+        e.departamento === value
       );
     } else {
       filteredEmployees = [];

@@ -11,21 +11,15 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 })
 export class FilterComponent {
   searchControl = new FormControl('');
-  searchTypeControl = new FormControl('name');
+  departmentSelectControl = new FormControl('');
+  selectedType: string = 'name';
+  selectedTypeLabel: string = 'Nombre';
 
+  @Output() clearChanged = new EventEmitter<boolean>();
   @Output() typeChanged = new EventEmitter<string>();
   @Output() valueChanged = new EventEmitter<string>();
 
   constructor() {
-    this.searchTypeControl.valueChanges
-      .subscribe(value => {
-        // emite un nuevo valor sólo si existe valor
-        if (value === null || value === undefined) {
-          return;
-        }
-        this.typeChanged.emit(value)
-      });
-
     this.searchControl.valueChanges
       .pipe(
         debounceTime(300),
@@ -39,10 +33,33 @@ export class FilterComponent {
 
         this.valueChanged.emit(value)
       });
+
+    this.departmentSelectControl.valueChanges
+      .subscribe(value => {
+        // emite un nuevo valor sólo si existe valor
+        if (value === null || value === undefined) {
+          return;
+        }
+
+        this.valueChanged.emit(value);
+      });
+  }
+
+  setSearchType(value: string, label: string) {
+    this.selectedType = value;
+    this.selectedTypeLabel = label;
+
+    this.searchControl.reset();
+    this.departmentSelectControl.reset();
+
+    this.clearChanged.emit(true);
+    this.typeChanged.emit(value);
   }
 
   clearFilter() {
-    this.searchControl.setValue('');
-    this.valueChanged.emit('')
+    this.searchControl.reset();
+    this.departmentSelectControl.reset();
+
+    this.clearChanged.emit(true);
   }
 }

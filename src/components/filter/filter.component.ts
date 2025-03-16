@@ -49,10 +49,6 @@ export class FilterComponent {
     this.selectedType = value;
     this.selectedTypeLabel = label;
 
-    this.searchControl.reset();
-    this.departmentSelectControl.reset();
-
-    this.clearChanged.emit(true);
     this.typeChanged.emit(value);
   }
 

@@ -1,8 +1,19 @@
+@if (loading)
+{
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="spinner-border text-secondary" style="width: 5rem; height: 5rem;" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</div>
+} @else {
 <div class="container mt-4">
   <div class="row justify-content-center">
+    @if (error != '') {
+    <div class="alert alert-danger text-center mb-3" role="alert">{{error}}</div>
+    }
     @if (editSuccess) {
-    <div class="alert alert-success" role="alert">
-      ¡Empleado editado correctamente!
+    <div class="alert alert-success text-center mb-3" role="alert">
+      ¡{{employee.nombre}} {{employee.apellidos}} fue editado correctamente!
     </div>
     }
     <div class="col-lg-8 col-md-10">
@@ -111,3 +122,4 @@
     </div>
   </div>
 </div>
+}

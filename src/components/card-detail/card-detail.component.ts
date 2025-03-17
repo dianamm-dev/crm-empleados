@@ -16,7 +16,7 @@ export class CardDetailComponent implements OnInit {
   @Input() employee!: any;
 
   editMode: boolean = false;
-  loading: boolean = true;
+  loading: boolean = false;
   editSuccess: boolean = false;
   error: string = '';
 
@@ -71,9 +71,14 @@ export class CardDetailComponent implements OnInit {
       next: () => {
         this.editSuccess = true;
       },
-      error: (e) => {
+      error: () => {
         this.loading = false;
-        this.error = e.error.error;
+        this.error = `Error guardando el usuario ${this.employee._id}`;
+
+        // mantiene el mensaje de error por 2 segundos antes de ocultarlo
+        setTimeout(() => {
+          this.error = '';
+        }, 2000);
       },
       complete: () => {
         this.loading = false;

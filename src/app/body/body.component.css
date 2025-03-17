@@ -133,7 +133,87 @@ ul li {
 ul li:hover {
     background-color: #e0e0e0;
 }
-p{
+
+p {
     font-size: 50px;
 }
 
+/* MÓVILES */
+@media (max-width: 480px) {
+    p {
+        font-size: 30px;
+    }
+
+    .background_avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+
+    button {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    ul li {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .max-w-4xl {
+        max-width: 95%;
+    }
+}
+
+/* TABLET */
+@media (max-width: 768px) {
+    .background_avatar {
+        width: 90px;
+        height: 90px;
+        font-size: 2.8rem;
+    }
+
+    p {
+        font-size: 40px;
+    }
+
+    button {
+        padding: 0.9rem;
+        font-size: 1.1rem;
+    }
+
+    ul li {
+        padding: 0.6rem;
+    }
+
+    .max-w-4xl {
+        max-width: 90%;
+    }
+}
+
+/* ESCRITORIO */
+@media (min-width: 769px) {
+    p {
+        font-size: 50px;
+    }
+
+    .background_avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
+
+    button {
+        padding: 1rem;
+        font-size: 1.25rem;
+    }
+
+    ul li {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .max-w-4xl {
+        max-width: 1280px;
+    }
+}

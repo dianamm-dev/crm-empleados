@@ -1,5 +1,5 @@
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-body',
@@ -9,8 +9,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-  router: any;
-  goToEmployees() {
-    this.router.nagivate(['empleados']);
-  }
+    private router: Router = inject(Router);
+  
+    goToEmployees() {
+        this.router.navigate(['/empleados']);
+    }
 }

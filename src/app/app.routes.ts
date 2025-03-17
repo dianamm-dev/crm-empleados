@@ -3,6 +3,7 @@ import { EmployeeDetailPageComponent } from '../pages/employee-detail-page/emplo
 import { EmployeePageComponent } from '../pages/employee-page/employee-page.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PasswordComponent } from './auth/components/password/password.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';  
 import { RegisterComponent } from './auth/components/register/register.component';
 import { BodyComponent } from './body/body.component';
 import { Error404Component } from './error-404/error-404.component';
@@ -36,6 +37,8 @@ export const routes: Routes = [
     {
         path: 'password',
         component: PasswordComponent
+        path: 'add-employee',
+        component: AddEmployeeComponent
     },
     {
         path: '**',

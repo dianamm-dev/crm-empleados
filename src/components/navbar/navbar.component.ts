@@ -14,6 +14,9 @@ export class NavbarComponent {
   public authService: AuthService = inject(AuthService);
 
   onLogout(): void {
-    this.authService.onLogout();
+    const confirmLogout = confirm('¿Estás seguro de que quieres cerrar sesión?');
+    if (confirmLogout) {
+      this.authService.onLogout();
+    }
   }
 }

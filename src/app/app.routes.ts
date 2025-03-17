@@ -7,6 +7,7 @@ import { PasswordComponent } from './auth/components/password/password.component
 import { RegisterComponent } from './auth/components/register/register.component';
 import { BodyComponent } from './body/body.component';
 import { Error404Component } from './error-404/error-404.component';
+import { AuthGuard } from './auth/guards/auth/guards/role.guard';
 
 export const routes: Routes = [
     {
@@ -16,15 +17,18 @@ export const routes: Routes = [
     },
     {
         path: 'empleados',
-        component: EmployeePageComponent
+        component: EmployeePageComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'home',
-        component: BodyComponent
+        component: BodyComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'detalle-empleado/:id',
-        component: EmployeeDetailPageComponent
+        component: EmployeeDetailPageComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'register',

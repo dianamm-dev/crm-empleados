@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AuthModule } from './auth/auth.module';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
+import { AuthGuard } from './auth/guards/auth/guards/role.guard';
+import { PasswordComponent } from './auth/components/password/password.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
     FormsModule,
     RouterOutlet,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    PasswordComponent
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [] 
 })
 export class AppModule { }

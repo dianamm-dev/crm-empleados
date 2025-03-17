@@ -43,12 +43,15 @@ export class LoginComponent {
   }
 
   onSubmit() {
+    console.log('Formulario enviado', this.isSubmitting);  // Agregar para debug
     if (this.form.valid) {
       this.isSubmitting = true;
       this.loginError = false;
-
+      console.log('Cargando...', this.isSubmitting);  // Agregar para debug
+  
       this.authService.login(this.form.value).subscribe(
         (response: any) => {
+          console.log('Respuesta exitosa:', response);
           alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
           localStorage.setItem('token', response.token);
           this.authService.username = response.user.username;
@@ -56,18 +59,15 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         },
         (error: any) => {
+          console.log('Error en el inicio de sesión:', error);
           this.loginError = true;
           alert('❌ Error en el inicio de sesión. Verifica tus credenciales.');
-          console.error('Error:', error);
-          setTimeout(() => {
-            this.isSubmitting = false;
-            this.form.reset();
-          });
+          this.isSubmitting = false;
+          this.form.reset();
         },
         () => {
-          setTimeout(() => {
-            this.isSubmitting = false;
-          });
+          console.log('Finalizado, restableciendo isSubmitting');
+          this.isSubmitting = false;
         }
       );
     } else {

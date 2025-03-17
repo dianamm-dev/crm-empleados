@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-password',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './password.component.html',
   styleUrls: ['./password.component.css']
 })

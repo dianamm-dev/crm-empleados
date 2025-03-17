@@ -21,10 +21,13 @@
       </div>
       <div>
         <label class="font-weight-bold h5">Contraseña</label>
-        <input class="form-control input-large" type="password" formControlName="password" placeholder="Contraseña" required />
+        <input class="form-control input-large" type="password" formControlName="password" placeholder="Contraseña"
+          required />
         <div *ngIf="form.controls.password.invalid && form.controls.password.touched" class="error-message">
-          <p class="text-danger" *ngIf="form.controls.password.hasError('minlength')">La contraseña debe tener al menos 8 caracteres.</p>
-          <p class="text-danger" *ngIf="form.controls.password.hasError('strongPassword')">La contraseña debe tener al menos una mayúscula, una minúscula, un número y un carácter especial.</p>
+          <p class="text-danger" *ngIf="form.controls.password.hasError('minlength')">La contraseña debe tener al menos
+            8 caracteres.</p>
+          <p class="text-danger" *ngIf="form.controls.password.hasError('strongPassword')">La contraseña debe tener al
+            menos una mayúscula, una minúscula, un número y un carácter especial.</p>
         </div>
       </div>
       <button class="btn btn-primary mt-3" type="submit" [disabled]="isSubmitting">
@@ -40,11 +43,11 @@
 
     <div class="extra-options text-center mt-3">
       <p>
-        ¿Aún no tienes cuenta?  
-        <a href="/register" class="register-link">Regístrate</a>.
+        ¿Aún no tienes cuenta?
+        <a routerLink="/register" class="register-link">Regístrate</a>.
       </p>
       <p>
-        <a href="/password" class="forgot-password">¿Has olvidado la contraseña?</a>
+        <a routerLink="/password" class="forgot-password">¿Has olvidado la contraseña?</a>
       </p>
     </div>
   </div>

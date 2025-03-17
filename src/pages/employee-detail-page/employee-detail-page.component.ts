@@ -21,7 +21,6 @@ export class EmployeeDetailPageComponent {
   ngOnInit() {
     this.activatedRoute.params.subscribe((param) => {
       const employeeId = param['id'] as string;
-      console.log(employeeId);
 
       this.employeeService.getEmployeeById(employeeId).subscribe({
         next: (response) => {

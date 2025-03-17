@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 
@@ -9,13 +9,14 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })
-export class FilterComponent {
+export class FilterComponent implements OnChanges {
   searchControl = new FormControl('');
   departmentSelectControl = new FormControl('');
   selectedType: string = 'name';
   selectedTypeLabel: string = 'Nombre';
 
-  @Output() clearChanged = new EventEmitter<boolean>();
+  @Input() reset: boolean = false;
+
   @Output() typeChanged = new EventEmitter<string>();
   @Output() valueChanged = new EventEmitter<string>();
 
@@ -45,6 +46,12 @@ export class FilterComponent {
       });
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['reset'] && changes['reset'].currentValue) {
+      this.clearFilter();
+    }
+  }
+
   setSearchType(value: string, label: string) {
     this.selectedType = value;
     this.selectedTypeLabel = label;
@@ -55,7 +62,5 @@ export class FilterComponent {
   clearFilter() {
     this.searchControl.reset();
     this.departmentSelectControl.reset();
-
-    this.clearChanged.emit(true);
   }
 }

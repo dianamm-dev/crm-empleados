@@ -16,13 +16,15 @@ export class EmployeePageComponent implements OnInit {
 
   employees: any[] = [];
   filteredEmployees: any[] = [];
+  paginatedEmployees: any[] = [];
 
   selectionType: string = 'name';
   loading: boolean = true;
   error: string = '';
 
+  pageNumber: number = 1;
   resultNumber: number = 0;
-  pageNumber: number = 0;
+  resetFiltersTrigger: boolean = false;
 
   ngOnInit(): void {
     this.loading = true;
@@ -30,7 +32,7 @@ export class EmployeePageComponent implements OnInit {
     this.employeeService.getAllEmployees().subscribe({
       next: (response) => {
         // inicializo los dos arrays a la respuesta del servidor
-        this.employees = this.filteredEmployees = response;
+        this.employees = this.filteredEmployees = this.paginatedEmployees = response;
       },
       error: (e) => {
         this.loading = false;
@@ -43,47 +45,63 @@ export class EmployeePageComponent implements OnInit {
     });
   }
 
-  clearFilter(value: boolean) {
-    if (value) {
-      this.filteredEmployees = this.employees; // reseteo el array de filtrados a la original
-    }
-  }
-
   typeChanged(value: string) {
     this.selectionType = value;
   }
 
-  filterChanged(value: string) {
-    let filteredEmployees = [];
+  clearFilter() {
+    this.filteredEmployees = this.employees;
+    this.selectionType = 'name';
 
-    if (this.selectionType === 'name') {
-      filteredEmployees = this.filteredEmployees.filter(e =>
-        e.nombre.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (this.selectionType === 'lastname') {
-      filteredEmployees = this.filteredEmployees.filter(e =>
-        e.apellidos.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (this.selectionType === 'email') {
-      filteredEmployees = this.filteredEmployees.filter(e =>
-        e.email.toLowerCase().includes(value.toLowerCase())
-      );
-    } else if (this.selectionType === 'department') {
-      filteredEmployees = this.filteredEmployees.filter(e =>
-        e.departamento === value
-      );
-    } else {
-      filteredEmployees = [];
+    // cambia la variable de reseteo y después de un corto delay la vuelve a false
+    this.resetFiltersTrigger = true;
+    setTimeout(() => this.resetFiltersTrigger = false, 0);
+  }
+
+  filterChanged(value: string) {
+    // reseteo el array de filtrados al array original
+    this.filteredEmployees = this.employees;
+
+    // aplicamos el filtro directamente al array de filtrados
+    switch (this.selectionType) {
+      case 'name':
+        this.filteredEmployees = this.filteredEmployees.filter(e =>
+          e.nombre.toLowerCase().includes(value.toLowerCase())
+        );
+        break;
+      case 'lastname':
+        this.filteredEmployees = this.filteredEmployees.filter(e =>
+          e.apellidos.toLowerCase().includes(value.toLowerCase())
+        );
+        break;
+      case 'email':
+        this.filteredEmployees = this.filteredEmployees.filter(e =>
+          e.apellidos.toLowerCase().includes(value.toLowerCase())
+        );
+        break;
+      case 'department':
+        this.filteredEmployees = this.filteredEmployees.filter(e =>
+          e.departamento === value
+        );
+        break;
+      default:
+        this.filteredEmployees = [];
+        break;
     }
 
-    this.filteredEmployees = filteredEmployees;
+    // recalculo la paginación
+    this.resultNumberChanged(this.resultNumber);
+    this.pageNumberChanged(1);
   }
 
   resultNumberChanged(value: number) {
     this.loading = true;
 
+    // recogemos el nuevo valor del número de resultados
     this.resultNumber = value;
-    this.filteredEmployees = this.filteredEmployees.slice(0, value);
+
+    // actualizamos el array de paginados
+    this.updatePaginatedEmployees();
 
     this.loading = false;
   }
@@ -91,11 +109,19 @@ export class EmployeePageComponent implements OnInit {
   pageNumberChanged(value: number) {
     this.loading = true;
 
-    this.pageNumber = value - 1; // obtener el número de página correcto para el slice
+    // recogemos el nuevo valor de la página seleccionada, menos 1 para el slice
+    this.pageNumber = value - 1;
 
-    const resultNumberInPage = this.pageNumber * this.resultNumber;
-    this.filteredEmployees = this.filteredEmployees.slice(resultNumberInPage, resultNumberInPage + this.resultNumber);
+    // actualizamos el array de paginados
+    this.updatePaginatedEmployees();
 
     this.loading = false;
+  }
+
+  updatePaginatedEmployees() {
+    const startIndex = this.pageNumber * this.resultNumber;
+    const endIndex = startIndex + this.resultNumber;
+
+    this.paginatedEmployees = this.filteredEmployees.slice(startIndex, endIndex);
   }
 }

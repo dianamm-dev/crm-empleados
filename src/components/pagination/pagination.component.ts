@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
@@ -8,11 +8,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
   selectedNumber: number = 10; // 10 resultados por defecto
   selectedPageNumber: number = 1; // primera página por defecto
   pagesNumber: number[] = [];
 
+  @Input() reset: boolean = false;
   @Input() resultsLength = 0;
 
   @Output() resultNumberChanged = new EventEmitter<number>();
@@ -23,6 +24,18 @@ export class PaginationComponent implements OnInit {
 
     // emito nuevo estado por defecto
     this.resultNumberChanged.emit(this.selectedNumber);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['reset'] && changes['reset'].currentValue) {
+      this.setPageNumber(1);
+      this.setResultNumber(10);
+    }
+
+    if (changes['resultsLength'] && changes['resultsLength'].currentValue) {
+      this.setPageNumber(1);
+      this.setResultNumber(10);
+    }
   }
 
   setResultNumber(value: number) {
@@ -47,7 +60,7 @@ export class PaginationComponent implements OnInit {
     this.selectedPageNumber = value;
 
     // emito un nuevo valor
-    this.pageNumberChanged.emit(value);
+    this.pageNumberChanged.emit(this.selectedPageNumber);
   }
 
   calculatePages() {

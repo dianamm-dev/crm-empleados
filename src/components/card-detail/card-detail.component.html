@@ -1,23 +1,106 @@
-<div class="card custom-shadow rounded-4 p-4" style="max-width: 400px; margin: auto; background-color: #f8f9fa;">
-  <div class="card-body text-center">
-    <div class="mx-auto d-flex align-items-center justify-content-center rounded-circle bg-light custom-shadow"
-      style="width: 100px; height: 100px;">
-      <i class="bi bi-person-circle" style="font-size: 4rem; color: #6c757d;"></i>
-    </div>
-    <h5 class="card-title mt-4 fw-bold" style="color: #495057;">{{ employee.nombre }} {{ employee.apellidos }}</h5>
-    <p class="card-text text-muted mb-4">{{ employee.departamento }}</p>
-    <ul class="list-group list-group-flush text-start">
-      <li class="list-group-item"><strong>Email:</strong> {{ employee.email }}</li>
-      <li class="list-group-item"><strong>Teléfono:</strong> {{ employee.telefono }}</li>
-      <li class="list-group-item"><strong>Salario:</strong> {{ employee.salario }}€</li>
-    </ul>
-    <div class="mt-4 d-flex justify-content-around">
-      <button class="btn btn-primary" (click)="editEmployee()">
-        <i class="bi bi-pencil-square"></i> Editar
-      </button>
-      <button class="btn btn-danger" (click)="deleteEmployee()">
-        <i class="bi bi-trash"></i> Borrar
-      </button>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card p-4 shadow-lg">
+        <h2 class="card-title text-center">Usuario</h2>
+
+        <form [formGroup]="userForm">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <div
+              *ngIf="userForm.controls.nombre.invalid && (userForm.controls.nombre.dirty || userForm.controls.nombre.touched)"
+              class="error-message">
+              <p class="text-danger" *ngIf="userForm.controls.nombre.hasError('required')">El nombre es obligatorio.</p>
+              <p class="text-danger"
+                *ngIf="userForm.controls.nombre.hasError('minlength') || userForm.controls.nombre.hasError('maxlength')">
+                El nombre debe tener entre 2 y 20 caracteres.</p>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Apellidos</label>
+            <input type="text" class="form-control" formControlName="apellidos">
+            <div
+              *ngIf="userForm.controls.apellidos.invalid && (userForm.controls.apellidos.dirty || userForm.controls.apellidos.touched)"
+              class="error-message">
+              <p class="text-danger" *ngIf="userForm.controls.apellidos.hasError('required')">Los apellidos son
+                obligatorios.</p>
+              <p class="text-danger"
+                *ngIf="userForm.controls.apellidos.hasError('minlength') || userForm.controls.apellidos.hasError('maxlength')">
+                Los apellidos deben tener entre 2 y 50 caracteres.</p>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            <div
+              *ngIf="userForm.controls.email.invalid && (userForm.controls.email.dirty || userForm.controls.email.touched)"
+              class="error-message">
+              <p class="text-danger" *ngIf="userForm.controls.email.hasError('required')">El email es obligatorio.</p>
+              <p class="text-danger" *ngIf="userForm.controls.email.hasError('email')">
+                El email debe tener el formato correcto.</p>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" formControlName="telefono">
+            <div
+              *ngIf="userForm.controls.telefono.invalid && (userForm.controls.telefono.dirty || userForm.controls.telefono.touched)"
+              class="error-message">
+              <p class="text-danger" *ngIf="userForm.controls.telefono.hasError('required')">El teléfono es obligatorio.
+              </p>
+              <p class="text-danger" *ngIf="userForm.controls.telefono.hasError('invalidPhone')">
+                El teléfono debe tener el formato correcto.</p>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Departamento</label>
+            <select class="form-select" formControlName="departamento" required>
+              <option value="" disabled selected>Selecciona un departamento</option>
+              <option value="direccion">Dirección</option>
+              <option value="diseño">Diseño</option>
+              <option value="desarrollo">Desarrollo</option>
+              <option value="recursoshumanos">Recursos Humanos</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Salario en €</label>
+            <input type="number" class="form-control" formControlName="salario">
+
+            <div
+              *ngIf="userForm.controls.salario.invalid && (userForm.controls.salario.dirty || userForm.controls.salario.touched)"
+              class="error-message">
+              <p class="text-danger" *ngIf="userForm.controls.salario.hasError('required')">El salario es obligatorio.
+              </p>
+
+              <p class="text-danger"
+                *ngIf="userForm.controls.salario.hasError('min') || userForm.controls.salario.hasError('max')">
+                El salario debe estar entre 1 y 1,000,000.</p>
+
+              <p class="text-danger" *ngIf="userForm.controls.salario.hasError('invalidSalary')">
+                El salario debe tener el formato correcto.</p>
+            </div>
+          </div>
+
+
+          <button type="button" class="generic-button w-100 btn btn-lg"
+            (click)="editMode ? saveEmployee() : toggleEdit()">
+            <i class="bi" [ngClass]="editMode ? 'bi-save' : 'bi-pencil'"></i>
+            {{ editMode ? ' Guardar' : ' Editar' }}
+          </button>
+          @if(editMode) {
+          <hr>
+          <button type="button" class="w-100 btn btn-lg btn-outline-danger" (click)="deleteEmployee()">
+            <i class="bi bi-delete"></i>Eliminar
+          </button>
+          }
+        </form>
+      </div>
     </div>
   </div>
 </div>

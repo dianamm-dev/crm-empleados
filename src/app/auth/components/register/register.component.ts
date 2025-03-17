@@ -26,6 +26,7 @@ export class RegisterComponent {
   });
 
   isSubmitting = false;
+  loginError: boolean | undefined;
 
   static strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const value = control.value as string;
@@ -43,9 +44,9 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    console.log(this.form.valid);
     if (this.form.valid) {
       this.isSubmitting = true;
+  
       this.authService.register(this.form.value).subscribe({
         next: (response: any) => {
           alert('✅ Registro exitoso. Serás redirigido al login.');
@@ -54,11 +55,10 @@ export class RegisterComponent {
         error: (error: any) => {
           alert('❌ Error en el registro. Inténtalo de nuevo.');
           console.error('Error:', error);
+          this.isSubmitting = false;
         },
         complete: () => {
-          setTimeout(() => {
-            this.isSubmitting = false;
-          }, 3000);
+          this.isSubmitting = false;
         }
       });
     }

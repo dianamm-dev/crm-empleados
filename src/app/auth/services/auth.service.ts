@@ -32,4 +32,14 @@ export class AuthService {
   public set username(username: string) {
     this._username = username;
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  getUsername(): string {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.username || '';
+  }
+
 }

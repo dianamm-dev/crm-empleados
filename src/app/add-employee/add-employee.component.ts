@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddEmployeeComponent {
 
-addEmployee: any;
-closeModal: any;
+addEmployeeData: any;
+closeModalFlag: any;
   employeeForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';

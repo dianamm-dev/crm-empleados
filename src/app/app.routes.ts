@@ -37,13 +37,11 @@ export const routes: Routes = [
     {
         path: 'password',
         component: PasswordComponent
-        path: 'add-employee',
-        component: AddEmployeeComponent
     },
     {
-        path: '**',
-        component: Error404Component
-    },
+        path: 'add-employee',
+        component: AddEmployeeComponent
+    }, 
     {
         path: 'error-404',
         component: Error404Component

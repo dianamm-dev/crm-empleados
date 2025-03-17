@@ -6,6 +6,7 @@ import { EmployeePageComponent } from '../pages/employee-page/employee-page.comp
 import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { PasswordComponent } from './auth/components/password/password.component';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';  
 
 export const routes: Routes = [
     {
@@ -36,6 +37,8 @@ export const routes: Routes = [
     {
         path: 'password',
         component: PasswordComponent
+        path: 'add-employee',
+        component: AddEmployeeComponent
     },
     {
         path: '**',

@@ -46,7 +46,7 @@ export class LoginComponent {
     if (this.form.valid) {
       this.isSubmitting = true;
       this.loginError = false;
-
+  
       this.authService.login(this.form.value).subscribe(
         (response: any) => {
           alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
@@ -70,6 +70,9 @@ export class LoginComponent {
           });
         }
       );
+    } else {
+      this.form.controls.email.markAsTouched();
+      this.form.controls.password.markAsTouched();
     }
   }
 }

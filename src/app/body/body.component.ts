@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
+
+    private router: Router = inject(Router);
+  
+    goToEmployees() {
+        this.router.navigate(['/empleados']);
+    }
 }

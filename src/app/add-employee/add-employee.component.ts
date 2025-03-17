@@ -1,12 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-employee',
-  imports: [
-    ReactiveFormsModule
-  ],
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './add-employee.component.html',
@@ -14,8 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddEmployeeComponent {
 
-addEmployee: any;
-closeModal: any;
+addEmployeeData: any;
+closeModalFlag: any;
   employeeForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';

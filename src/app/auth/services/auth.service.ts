@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,28 +8,28 @@ import { inject, Injectable } from '@angular/core';
 export class AuthService {
   private apiUrl = 'https://crm-empleados.onrender.com/api/usuarios';
   private http: HttpClient = inject(HttpClient);
-  private _email = '';
+
+  private router: Router = inject(Router);
+  private _username = '';
 
   register(user: any) {
-    console.log(user);
     return this.http.post(`https://crm-empleados.onrender.com/api/usuarios/registro`, user);
   }
 
   login(credentials: any) {
-    this.email = credentials.email;
     return this.http.post(`https://crm-empleados.onrender.com/api/usuarios/login`, credentials);
   }
 
-  logout() {
+  onLogout(): void {
     localStorage.clear();
-    this.email = '';
+    this.router.navigate(['/login']);
   }
 
-  public get email() {
-    return this._email;
+  public get username() {
+    return this._username;
   }
 
-  public set email(email: string) {
-    this._email = email;
+  public set username(username: string) {
+    this._username = username;
   }
 }

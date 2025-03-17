@@ -1,0 +1,28 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      <span class="d-none d-sm-block">Selecciona un filtro</span>
+    </button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-item" (click)="setSearchType('name', 'Nombre')">Nombre</li>
+      <li class="dropdown-item" (click)="setSearchType('lastname', 'Apellido')">Apellido</li>
+      <li class="dropdown-item" (click)="setSearchType('email', 'Email')">Email</li>
+      <li class="dropdown-item" (click)="setSearchType('department', 'Departamento')">Departamento</li>
+    </ul>
+  </div>
+  @if (selectedType != "department") {
+  <input type="text" class="form-control" placeholder="Búsqueda por {{selectedTypeLabel}}..."
+    [formControl]="searchControl" />
+  } @else {
+  <select class="form-select" [formControl]="departmentSelectControl">
+    <option selected>Selecciona un filtro de departamento</option>
+    <option value="direccion">Dirección</option>
+    <option value="diseño">Diseño</option>
+    <option value="desarrollo">Desarrollo</option>
+  </select>
+  }
+  <button class="btn btn-outline-secondary" (click)="clearFilter()">
+    <i class="bi bi-x-circle"></i>
+  </button>
+</div>

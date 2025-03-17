@@ -51,8 +51,7 @@ export class LoginComponent {
         (response: any) => {
           alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
           localStorage.setItem('token', response.token);
-          this.authService.email = this.form.value.email!;
-          console.log('Response:', response);
+          this.authService.username = response.user.username;
           this.form.reset();
           this.router.navigate(['/home']);
         },

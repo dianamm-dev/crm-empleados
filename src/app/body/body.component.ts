@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-
     private router: Router = inject(Router);
   
     goToEmployees() {

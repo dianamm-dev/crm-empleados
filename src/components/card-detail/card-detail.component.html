@@ -1,9 +1,13 @@
 <div class="container mt-4">
   <div class="row justify-content-center">
+    @if (editSuccess) {
+    <div class="alert alert-success" role="alert">
+      ¡Empleado editado correctamente!
+    </div>
+    }
     <div class="col-lg-8 col-md-10">
       <div class="card p-4 shadow-lg">
-        <h2 class="card-title text-center">Usuario</h2>
-
+        <h2 class="card-title text-center">Empleado</h2>
         <form [formGroup]="userForm">
           <div class="mb-3">
             <label class="form-label">Nombre</label>
@@ -86,19 +90,22 @@
                 El salario debe tener el formato correcto.</p>
             </div>
           </div>
-
-
-          <button type="button" class="generic-button w-100 btn btn-lg"
-            (click)="editMode ? saveEmployee() : toggleEdit()">
-            <i class="bi" [ngClass]="editMode ? 'bi-save' : 'bi-pencil'"></i>
-            {{ editMode ? ' Guardar' : ' Editar' }}
-          </button>
-          @if(editMode) {
-          <hr>
-          <button type="button" class="w-100 btn btn-lg btn-outline-danger" (click)="deleteEmployee()">
-            <i class="bi bi-delete"></i>Eliminar
-          </button>
-          }
+          <div class="d-grid gap-2">
+            <button type="button" class="generic-button w-100 btn btn-lg"
+              (click)="editMode ? saveEmployee() : toggleEdit()">
+              <i class="bi" [ngClass]="editMode ? 'bi-save' : 'bi-pencil'"></i>
+              {{ editMode ? ' Guardar' : ' Editar' }}
+            </button>
+            @if(editMode) {
+            <button type="button" class="w-100 btn btn-lg btn-outline-secondary" (click)="toggleEdit()">
+              <i class="bi bi-cancel"></i>Cancelar
+            </button>
+            <hr>
+            <button type="button" class="w-100 btn btn-lg btn-outline-danger" (click)="deleteEmployee()">
+              <i class="bi bi-delete"></i>Eliminar
+            </button>
+            }
+          </div>
         </form>
       </div>
     </div>

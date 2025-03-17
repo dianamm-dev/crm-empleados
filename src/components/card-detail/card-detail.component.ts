@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-card-detail',
@@ -10,12 +11,14 @@ import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModu
   styleUrl: './card-detail.component.css'
 })
 export class CardDetailComponent implements OnInit {
+  employeeService: EmployeeService = inject(EmployeeService);
+
   @Input() employee!: any;
 
-  @Output() edit = new EventEmitter<any>();
-  @Output() delete = new EventEmitter<number>();
-
   editMode: boolean = false;
+  loading: boolean = true;
+  editSuccess: boolean = false;
+  error: string = '';
 
   userForm = new FormGroup({
     nombre: new FormControl({ value: '', disabled: true }, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
@@ -50,18 +53,42 @@ export class CardDetailComponent implements OnInit {
     this.userForm.controls.salario.setValue(this.employee.salario);
   }
 
-  editEmployee() {
-    this.edit.emit(this.employee);
+  saveEmployee() {
+    this.loading = true;
+
+    // creamos usuario editado a partir de los valores del formulario
+    let employeeEdited = {
+      nombre: this.userForm.controls.nombre.value,
+      apellidos: this.userForm.controls.apellidos.value,
+      email: this.userForm.controls.email.value,
+      telefono: this.userForm.controls.telefono.value,
+      departamento: this.userForm.controls.departamento.value,
+      salario: this.userForm.controls.salario.value,
+    };
+
+    // llamamos a la API
+    this.employeeService.updateEmployeeById(this.employee._id, employeeEdited).subscribe({
+      next: () => {
+        this.editSuccess = true;
+      },
+      error: (e) => {
+        this.loading = false;
+        this.error = e.error.error;
+      },
+      complete: () => {
+        this.loading = false;
+        this.error = '';
+        this.toggleEdit();
+
+        // mantiene el mensaje por 2 segundos antes de ocultarlo
+        setTimeout(() => {
+          this.editSuccess = false;
+        }, 2000);
+      }
+    });
   }
 
   deleteEmployee() {
-    this.delete.emit(this.employee.id);
-  }
-
-  saveEmployee() {
-    // lógica de guardado
-
-    this.toggleEdit();
   }
 
   toggleEdit() {

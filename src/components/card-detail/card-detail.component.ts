@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EmployeeService } from '../../services/employee.service';
 
 @Component({
@@ -12,12 +13,14 @@ import { EmployeeService } from '../../services/employee.service';
 })
 export class CardDetailComponent implements OnInit {
   employeeService: EmployeeService = inject(EmployeeService);
+  router: Router = inject(Router);
 
   @Input() employee!: any;
 
   editMode: boolean = false;
   loading: boolean = false;
   editSuccess: boolean = false;
+  deleteSuccess: boolean = false;
   error: string = '';
 
   userForm = new FormGroup({
@@ -94,6 +97,34 @@ export class CardDetailComponent implements OnInit {
   }
 
   deleteEmployee() {
+    this.loading = true;
+
+    // llamamos a la API
+    this.employeeService.deleteEmployeeById(this.employee._id).subscribe({
+      next: () => {
+        this.deleteSuccess = true;
+      },
+      error: () => {
+        this.loading = false;
+        this.error = `Error eliminando el usuario ${this.employee._id}`;
+
+        // mantiene el mensaje de error por 2 segundos antes de ocultarlo
+        setTimeout(() => {
+          this.error = '';
+        }, 2000);
+      },
+      complete: () => {
+        this.loading = false;
+        this.error = '';
+        this.toggleEdit();
+
+        // mantiene el mensaje por 2 segundos antes de ocultarlo
+        setTimeout(() => {
+          this.deleteSuccess = false;
+          this.router.navigate(['/empleados']);
+        }, 2000);
+      }
+    });
   }
 
   toggleEdit() {

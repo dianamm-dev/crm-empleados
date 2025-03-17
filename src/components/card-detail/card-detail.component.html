@@ -16,6 +16,12 @@
       ¡{{employee.nombre}} {{employee.apellidos}} fue editado correctamente!
     </div>
     }
+    @if (deleteSuccess) {
+    <div class="alert alert-warning text-center mb-3" role="alert">
+      ¡{{employee.nombre}} {{employee.apellidos}} fue eliminado correctamente!
+    </div>
+    }
+
     <div class="col-lg-8 col-md-10">
       <div class="card p-4 shadow-lg">
         <h2 class="card-title text-center">Empleado</h2>

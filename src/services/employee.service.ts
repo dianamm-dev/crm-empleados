@@ -36,4 +36,13 @@ export class EmployeeService {
 
         return this.http.put(`${this.url}/empleados/${id}`, editedEmployee, { headers });
     }
+
+    deleteEmployeeById(id: string) {
+        const token: string = localStorage.getItem('token') ?? '';
+        const headers = new HttpHeaders({
+            Authorization: token,
+        });
+
+        return this.http.delete(`${this.url}/empleados/${id}`, { headers });
+    }
 }

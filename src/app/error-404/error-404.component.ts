@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-error-404',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './error-404.component.html',
   styleUrls: ['./error-404.component.css']
 })

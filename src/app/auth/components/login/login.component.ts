@@ -43,11 +43,11 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log('Formulario enviado', this.isSubmitting);  // Agregar para debug
+    console.log('Formulario enviado', this.isSubmitting);
     if (this.form.valid) {
       this.isSubmitting = true;
       this.loginError = false;
-      console.log('Cargando...', this.isSubmitting);  // Agregar para debug
+      console.log('Cargando...', this.isSubmitting);
   
       this.authService.login(this.form.value).subscribe(
         (response: any) => {

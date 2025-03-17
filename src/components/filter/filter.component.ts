@@ -27,7 +27,6 @@ export class FilterComponent implements OnChanges {
         distinctUntilChanged(),
       )
       .subscribe(value => {
-        // emite un nuevo valor sólo si existe valor
         if (value === null || value === undefined) {
           return;
         }
@@ -37,7 +36,6 @@ export class FilterComponent implements OnChanges {
 
     this.departmentSelectControl.valueChanges
       .subscribe(value => {
-        // emite un nuevo valor sólo si existe valor
         if (value === null || value === undefined) {
           return;
         }

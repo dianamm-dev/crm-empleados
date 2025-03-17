@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-employee',
+  imports: [
+    ReactiveFormsModule
+  ],
+  standalone: true,
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent {
 
-addEmployee: any;
-closeModal: any;
+addEmployeeData: any;
+closeModalFlag: any;
   employeeForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';

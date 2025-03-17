@@ -37,6 +37,8 @@ export const routes: Routes = [
     {
         path: 'password',
         component: PasswordComponent
+    },
+    {
         path: 'add-employee',
         component: AddEmployeeComponent
     },

@@ -5,14 +5,11 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { routes } from './app.routes';
 import { FooterComponent } from '../components/footer/footer.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AddEmployeeComponent,
   ],
   imports: [
     BrowserModule,

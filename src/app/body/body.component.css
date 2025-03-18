@@ -2,6 +2,11 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f3f4f6;
 }
+h3 {
+    color: #11998E;
+    font-weight: 500;
+    
+}
 
 button {
     font-weight: bold;
@@ -44,9 +49,12 @@ ul li {
     background-color: white;
 }
 
-.shadow-lg {
+/* .shadow-lg {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
+} */
+ .shadow-lg {
+    box-shadow: #11998E;
+ }
 
 .rounded-xl {
     border-radius: 1rem;

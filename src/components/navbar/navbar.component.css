@@ -3,6 +3,10 @@ nav {
     border-bottom: 2px solid #ccc; 
     padding-bottom: 10px; 
 }
+ h2 {
+    color: black;
+    font-weight: 700;
+} 
 
 .logo {
     width: 100px;

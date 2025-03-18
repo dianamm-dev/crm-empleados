@@ -8,10 +8,6 @@ button {
     cursor: pointer;
 }
 
-.p-6.bg-white.shadow-lg.rounded-xl.w-full.max-w-4xl {
-    margin-top: 3rem;
-}
-
 ul li {
     display: flex;
     align-items: center;

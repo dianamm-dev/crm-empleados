@@ -6,18 +6,17 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://crm-empleados.onrender.com/api/usuarios';
   private http: HttpClient = inject(HttpClient);
-
   private router: Router = inject(Router);
-  private _username = '';
+
+  private apiUrl = 'https://crm-empleados.onrender.com/api/usuarios';
 
   register(user: any) {
-    return this.http.post(`https://crm-empleados.onrender.com/api/usuarios/registro`, user);
+    return this.http.post(`${this.apiUrl}/registro`, user);
   }
 
   login(credentials: any) {
-    return this.http.post(`https://crm-empleados.onrender.com/api/usuarios/login`, credentials);
+    return this.http.post(`${this.apiUrl}/login`, credentials);
   }
 
   onLogout(): void {
@@ -25,20 +24,12 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  public get username() {
-    return this._username;
-  }
-
-  public set username(username: string) {
-    this._username = username;
-  }
-
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
   }
 
   getUsername(): string {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('username') || '{}');
     return user.username || '';
   }
 

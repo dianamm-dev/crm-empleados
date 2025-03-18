@@ -9,4 +9,5 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
+  username: string = localStorage.getItem('username') ?? 'Usuario no autenticado';
 }

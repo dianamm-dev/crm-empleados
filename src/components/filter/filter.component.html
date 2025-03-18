@@ -1,22 +1,22 @@
 <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-      aria-expanded="false">
-      <span class="d-none d-sm-block">Selecciona un filtro</span>
-    </button>
-    <ul class="dropdown-menu">
-      <li class="dropdown-item" (click)="setSearchType('name', 'Nombre')">Nombre</li>
-      <li class="dropdown-item" (click)="setSearchType('lastname', 'Apellido')">Apellido</li>
-      <li class="dropdown-item" (click)="setSearchType('email', 'Email')">Email</li>
-      <li class="dropdown-item" (click)="setSearchType('department', 'Departamento')">Departamento</li>
-    </ul>
-  </div>
+  <!-- Botón de selección de filtro -->
+  <button class="generic-button btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-funnel"></i> <span class="d-none d-md-inline">Selecciona un filtro</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" (click)="setSearchType('name', 'Nombre')">Nombre</a></li>
+    <li><a class="dropdown-item" (click)="setSearchType('lastname', 'Apellido')">Apellido</a></li>
+    <li><a class="dropdown-item" (click)="setSearchType('email', 'Email')">Email</a></li>
+    <li><a class="dropdown-item" (click)="setSearchType('department', 'Departamento')">Departamento</a></li>
+  </ul>
+
+  <!-- Campo de búsqueda dinámico -->
   @if (selectedType != "department") {
-  <input type="text" class="form-control" placeholder="Búsqueda por {{selectedTypeLabel}}..."
-    [formControl]="searchControl" />
+  <input type="text" class="form-control" placeholder="Buscar por {{selectedTypeLabel}}..."
+    [formControl]="searchControl">
   } @else {
   <select class="form-select" [formControl]="departmentSelectControl">
-    <option selected>Selecciona un filtro de departamento</option>
+    <option selected disabled>Selecciona un departamento...</option>
     <option value="direccion">Dirección</option>
     <option value="diseño">Diseño</option>
     <option value="desarrollo">Desarrollo</option>

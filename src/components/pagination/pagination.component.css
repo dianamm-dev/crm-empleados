@@ -7,3 +7,11 @@
     border-color: gray !important; /* Borde gris */
     color: white !important; /* Texto en blanco */
 }
+
+.sticky-pagination {
+    position: sticky;
+    bottom: 0;
+    background: white; /* Asegura que no se superponga con el contenido */
+    z-index: 1000;
+    padding: 10px 0;
+  }

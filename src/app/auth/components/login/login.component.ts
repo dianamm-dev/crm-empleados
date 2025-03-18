@@ -47,19 +47,23 @@ export class LoginComponent {
     if (this.form.valid) {
       this.isSubmitting = true;
       this.loginError = false;
-      console.log('Cargando...', this.isSubmitting);
-  
+      // console.log('Cargando...', this.isSubmitting);
+
       this.authService.login(this.form.value).subscribe(
         (response: any) => {
-          console.log('Respuesta exitosa:', response);
+          // console.log('Respuesta exitosa:', response);
+
           alert('✅ Inicio de sesión exitoso. Serás redirigido al home.');
+
+          // al hacer login correcto, guardo en sesión el token y el username
           localStorage.setItem('token', response.token);
-          this.authService.username = response.user.username;
+          localStorage.setItem('username', response.user.username);
+
           this.form.reset();
           this.router.navigate(['/home']);
         },
         (error: any) => {
-          console.log('Error en el inicio de sesión:', error);
+          //  console.log('Error en el inicio de sesión:', error);
           this.loginError = true;
           alert('❌ Error en el inicio de sesión. Verifica tus credenciales.');
           this.isSubmitting = false;

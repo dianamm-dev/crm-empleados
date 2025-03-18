@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-body',
@@ -10,6 +9,5 @@ import { AuthService } from '../auth/services/auth.service';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-  public authService: AuthService = inject(AuthService);
-  
+  username: string = localStorage.getItem('username') ?? 'Usuario no autenticado';
 }

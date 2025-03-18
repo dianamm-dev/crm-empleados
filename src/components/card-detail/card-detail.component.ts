@@ -72,6 +72,7 @@ export class CardDetailComponent implements OnInit {
     // llamamos a la API
     this.employeeService.updateEmployeeById(this.employee._id, employeeEdited).subscribe({
       next: () => {
+        this.employee = employeeEdited; //para que muestre en la interfaz el empleado actualizado
         this.editSuccess = true;
       },
       error: () => {

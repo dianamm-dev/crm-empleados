@@ -96,10 +96,23 @@ button {
 
 button:hover {
     background-color: #d4d4d4;
+    cursor: pointer;
+}
+
+.hover-span {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+  
+.hover-span:hover {
+    background-color: #e5e7eb;
 }
 
 ul {
     padding-left: 0;
+    margin-top: 18px;
 }
 
 ul li {

@@ -5,14 +5,14 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { PasswordComponent } from './auth/components/password/password.component';
 import { RegisterComponent } from './auth/components/register/register.component';
+import { AuthGuard } from './auth/guards/auth/guards/role.guard';
 import { BodyComponent } from './body/body.component';
 import { Error404Component } from './error-404/error-404.component';
-import { AuthGuard } from './auth/guards/auth/guards/role.guard';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'home',
         pathMatch: 'full'
     },
     {

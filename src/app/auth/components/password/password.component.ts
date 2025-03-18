@@ -1,16 +1,15 @@
-// 1️⃣ Genera el componente con:
-// ng generate component components/password
-
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-password',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './password.component.html',
   styleUrls: ['./password.component.css']
 })
 export class PasswordComponent {
-  constructor(private router: Router) {}
+  private router: Router = inject(Router);
 
   recoverPassword(method: string) {
     if (method === 'email') {

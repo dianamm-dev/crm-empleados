@@ -1,18 +1,76 @@
-<section class="bodyest seccion-clara ">
-    <div class="container mt-4 text-center ">
-
-        <div class="row g-4">
-            <div class="col-12 col-md-6 ">
-            
-            <div class="p-5  text-center"><button class="boton">  <i class="bi bi-person-plus-fill"></i><span> Crear empleado</span></button></div>
-            </div>
-            <div class="col-12 col-md-6">
-            <div class="p-5  text-center"><button class="boton"> <i class="bi bi-person-fill-check"></i><span>Ver empleados</span></button></div>
-            </div>
-            <div class="col-12  ">
-            <div class="p-5 text-center">    <p >La fuerza del equipo viene de cada miembro</p>
-                <p >La fuerza de cada miembro es el equipo</p></div>
-            </div>
+<div class="container">
+  <div class="row justify-content-center p-4 d-flex align-items-stretch">
+    <!-- Tarjeta de Recursos Humanos -->
+    <div class="col-12 col-lg-6 mb-4 d-flex">
+      <div class="d-flex flex-column align-items-center p-4 bg-white shadow-sm rounded-xl w-100">
+        <div class="mx-auto d-flex align-items-center justify-content-center rounded-circle bg-light background_avatar">
+          <i class="bi bi-person-video" style="font-size: 150px;"></i>
         </div>
+        <h2 class="text-xl font-bold text-center mt-4 d-flex justify-content-center">DEPARTAMENTO DE RECURSOS HUMANOS
+        </h2>
+        <h3>{{username}}</h3>
+      </div>
     </div>
-</section>
+
+    <!-- Botones de opciones -->
+    <div class="col-12 col-lg-6 d-flex">
+      <div class="d-flex flex-column space-y-4 w-100">
+        <div class="p-4 bg-gray-300 rounded-lg">
+          <button routerLink="/empleados" type="button" class="generic-button w-100 btn btn-lg">
+            <i class="bi bi-person-lines-fill"></i> Listado de empleados
+          </button>
+        </div>
+        <div routerLink="/add-employee" class="p-4 bg-gray-300 rounded-lg">
+          <button type="button" class="generic-button w-100 btn btn-lg">
+            <i class="bi bi-person-fill-add"></i> Añadir nuevo empleado
+          </button>
+        </div>
+        <div class="p-4 bg-gray-300 rounded-lg">
+          <button type="button" class="generic-button w-100 btn btn-lg">
+            <i class="bi bi-journal-check"></i> Evaluación de desempeño
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="p-6 bg-white shadow-sm rounded-xl w-full">
+          <ul class="space-y-3">
+            <li routerLink="/add-employee"
+              class="flex items-center justify-center space-x-3 p-4 border border-gray-300 rounded-xl shadow-sm bg-white">
+              <img src="https://cdn-icons-png.flaticon.com/512/2285/2285516.png" alt="Lista" class="w-5 h-5" />
+              <span>CONTRATACIONES</span>
+            </li>
+            <li
+              class="flex items-center justify-center space-x-3 p-4 border border-gray-300 rounded-xl shadow-sm bg-white">
+              <img src="https://cdn-icons-png.flaticon.com/512/115/115902.png" alt="Añadir" class="w-5 h-5" />
+              <span>REUNIONES</span>
+            </li>
+            <li
+              class="flex items-center justify-center space-x-3 p-4 border border-gray-300 rounded-xl shadow-sm bg-white"
+              onclick="window.open('https://web.unican.es/Estudios', '_blank')">
+              <img
+                src="https://w7.pngwing.com/pngs/779/63/png-transparent-book-computer-icons-book-angle-furniture-rectangle.png"
+                alt="Editar" class="w-5 h-5" />
+              <span>FORMACIONES</span>
+            </li>
+            <li
+              class="flex items-center justify-center space-x-3 p-4 border border-gray-300 rounded-xl shadow-sm bg-white"
+              onclick="window.open('https://web.unican.es/consejo-direccion/secretaria-general/organos-de-gobierno', '_blank')">
+              <img src="https://cdn-icons-png.flaticon.com/512/1656/1656819.png" alt="Eliminar" class="w-5 h-5" />
+              <span>CLAUSTRO</span>
+            </li>
+            <li
+              class="flex items-center justify-center space-x-3 p-4 border border-gray-300 rounded-xl shadow-sm bg-white">
+              <img src="https://cdn-icons-png.flaticon.com/512/2693/2693507.png" alt="Eliminar" class="w-5 h-5" />
+              <span>CALENDARIO</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

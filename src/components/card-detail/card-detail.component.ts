@@ -7,7 +7,7 @@ import { EmployeeService } from '../../services/employee.service';
 @Component({
   selector: 'app-card-detail',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule,],
   templateUrl: './card-detail.component.html',
   styleUrl: './card-detail.component.css'
 })
@@ -57,75 +57,79 @@ export class CardDetailComponent implements OnInit {
   }
 
   saveEmployee() {
-    this.loading = true;
+    if (confirm(`¿Estás segura de que deseeas editar a ${this.userForm.controls.nombre.value}?`)) {
+      this.loading = true;
 
-    // creamos usuario editado a partir de los valores del formulario
-    let employeeEdited = {
-      nombre: this.userForm.controls.nombre.value,
-      apellidos: this.userForm.controls.apellidos.value,
-      email: this.userForm.controls.email.value,
-      telefono: this.userForm.controls.telefono.value,
-      departamento: this.userForm.controls.departamento.value,
-      salario: this.userForm.controls.salario.value,
-    };
+      // creamos usuario editado a partir de los valores del formulario
+      let employeeEdited = {
+        nombre: this.userForm.controls.nombre.value,
+        apellidos: this.userForm.controls.apellidos.value,
+        email: this.userForm.controls.email.value,
+        telefono: this.userForm.controls.telefono.value,
+        departamento: this.userForm.controls.departamento.value,
+        salario: this.userForm.controls.salario.value,
+      };
 
-    // llamamos a la API
-    this.employeeService.updateEmployeeById(this.employee._id, employeeEdited).subscribe({
-      next: () => {
-        this.employee = employeeEdited; //para que muestre en la interfaz el empleado actualizado
-        this.editSuccess = true;
-      },
-      error: () => {
-        this.loading = false;
-        this.error = `Error guardando el usuario ${this.employee._id}`;
+      // llamamos a la API
+      this.employeeService.updateEmployeeById(this.employee._id, employeeEdited).subscribe({
+        next: () => {
+          this.employee = employeeEdited; //para que muestre en la interfaz el empleado actualizado
+          this.editSuccess = true;
+        },
+        error: () => {
+          this.loading = false;
+          this.error = `Error guardando el usuario ${this.employee._id}`;
 
-        // mantiene el mensaje de error por 2 segundos antes de ocultarlo
-        setTimeout(() => {
+          // mantiene el mensaje de error por 2 segundos antes de ocultarlo
+          setTimeout(() => {
+            this.error = '';
+          }, 2000);
+        },
+        complete: () => {
+          this.loading = false;
           this.error = '';
-        }, 2000);
-      },
-      complete: () => {
-        this.loading = false;
-        this.error = '';
-        this.toggleEdit();
+          this.toggleEdit();
 
-        // mantiene el mensaje por 2 segundos antes de ocultarlo
-        setTimeout(() => {
-          this.editSuccess = false;
-        }, 2000);
-      }
-    });
+          // mantiene el mensaje por 2 segundos antes de ocultarlo
+          setTimeout(() => {
+            this.editSuccess = false;
+          }, 2000);
+        }
+      });
+    }
   }
 
   deleteEmployee() {
-    this.loading = true;
+    if (confirm(`¿Estás segura de que deseeas eliminar a ${this.employee.nombre}?`)) {
+      this.loading = true;
 
-    // llamamos a la API
-    this.employeeService.deleteEmployeeById(this.employee._id).subscribe({
-      next: () => {
-        this.deleteSuccess = true;
-      },
-      error: () => {
-        this.loading = false;
-        this.error = `Error eliminando el usuario ${this.employee._id}`;
+      // llamamos a la API
+      this.employeeService.deleteEmployeeById(this.employee._id).subscribe({
+        next: () => {
+          this.deleteSuccess = true;
+        },
+        error: () => {
+          this.loading = false;
+          this.error = `Error eliminando el usuario ${this.employee._id}`;
 
-        // mantiene el mensaje de error por 2 segundos antes de ocultarlo
-        setTimeout(() => {
+          // mantiene el mensaje de error por 2 segundos antes de ocultarlo
+          setTimeout(() => {
+            this.error = '';
+          }, 2000);
+        },
+        complete: () => {
+          this.loading = false;
           this.error = '';
-        }, 2000);
-      },
-      complete: () => {
-        this.loading = false;
-        this.error = '';
-        this.toggleEdit();
+          this.toggleEdit();
 
-        // mantiene el mensaje por 2 segundos antes de ocultarlo
-        setTimeout(() => {
-          this.deleteSuccess = false;
-          this.router.navigate(['/empleados']);
-        }, 2000);
-      }
-    });
+          // mantiene el mensaje por 2 segundos antes de ocultarlo
+          setTimeout(() => {
+            this.deleteSuccess = false;
+            this.router.navigate(['/empleados']); //me lleva para atrás pasado 2 segundos
+          }, 2000);
+        }
+      });
+    }
   }
 
   toggleEdit() {
@@ -146,6 +150,16 @@ export class CardDetailComponent implements OnInit {
       this.userForm.controls['departamento'].disable();
       this.userForm.controls['salario'].disable();
     }
+  }
+  cancel() {
+    this.toggleEdit();
+
+    this.userForm.controls.nombre.setValue(this.employee.nombre);
+    this.userForm.controls.apellidos.setValue(this.employee.apellidos);
+    this.userForm.controls.email.setValue(this.employee.email);
+    this.userForm.controls.telefono.setValue(this.employee.telefono);
+    this.userForm.controls.departamento.setValue(this.employee.departamento);
+    this.userForm.controls.salario.setValue(this.employee.salario);
   }
 }
 

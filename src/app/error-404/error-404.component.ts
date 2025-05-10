@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-error-404',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './error-404.component.html',
-  styleUrl: './error-404.component.css'
+  styleUrls: ['./error-404.component.css']
 })
 export class Error404Component {
+  private router: Router = inject(Router);
 
+  goHome(): void {
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,0 +1,9 @@
+ .page-link {
+    color: gray !important; /* Texto en gris */
+ }
+
+.pagination .page-item.active .page-link {
+    background-color: gray !important; /* Fondo gris */
+    border-color: gray !important; /* Borde gris */
+    color: white !important; /* Texto en blanco */
+}

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class EmployeeService {
-    private url: string = "https://crm-empleados.onrender.com/api/";
+    private url: string = "https://crm-empleados.onrender.com/api";
 
     private http: HttpClient = inject(HttpClient);
 
@@ -16,7 +16,7 @@ export class EmployeeService {
             Authorization: token,
         });
 
-        return this.http.get(`${this.url}empleados`, { headers });
+        return this.http.get(`${this.url}/empleados`, { headers });
     }
 
     getEmployeeById(id: string) {
@@ -25,6 +25,24 @@ export class EmployeeService {
             Authorization: token,
         });
 
-        return this.http.get(`${this.url}empleados/${id}`, { headers });
+        return this.http.get(`${this.url}/empleados/${id}`, { headers });
+    }
+
+    updateEmployeeById(id: string, editedEmployee: any) {
+        const token: string = localStorage.getItem('token') ?? '';
+        const headers = new HttpHeaders({
+            Authorization: token,
+        });
+
+        return this.http.put(`${this.url}/empleados/${id}`, editedEmployee, { headers });
+    }
+
+    deleteEmployeeById(id: string) {
+        const token: string = localStorage.getItem('token') ?? '';
+        const headers = new HttpHeaders({
+            Authorization: token,
+        });
+
+        return this.http.delete(`${this.url}/empleados/${id}`, { headers });
     }
 }

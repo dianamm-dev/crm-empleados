@@ -1,16 +1,17 @@
 import { Routes } from '@angular/router';
-import { BodyComponent } from './body/body.component';
-import { Error404Component } from './error-404/error-404.component';
 import { EmployeeDetailPageComponent } from '../pages/employee-detail-page/employee-detail-page.component';
 import { EmployeePageComponent } from '../pages/employee-page/employee-page.component';
 import { LoginComponent } from './auth/components/login/login.component';
-import { RegisterComponent } from './auth/components/register/register.component';
+import { PasswordComponent } from './auth/components/password/password.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';  
+import { RegisterComponent } from './auth/components/register/register.component';
+import { BodyComponent } from './body/body.component';
+import { Error404Component } from './error-404/error-404.component';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'register',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
@@ -34,11 +35,15 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: 'add-employee',  // <-- Nueva ruta para el componente
-        component: AddEmployeeComponent
+        path: 'password',
+        component: PasswordComponent
     },
     {
-        path: '**',
+        path: 'add-employee',
+        component: AddEmployeeComponent
+    }, 
+    {
+        path: 'error-404',
         component: Error404Component
     }
 ];

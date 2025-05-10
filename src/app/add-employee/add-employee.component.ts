@@ -7,6 +7,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-employee.component.scss']
 })
 export class AddEmployeeComponent {
+
+addEmployeeData: any;
+closeModalFlag: any;
   employeeForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';
